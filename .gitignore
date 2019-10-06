@@ -1,2 +1,5 @@
 venv/
 .idea
+.swp
+input/*
+__pycache__
