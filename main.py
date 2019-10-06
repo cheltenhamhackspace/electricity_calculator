@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import sys
 import csv
 import argparse
 
@@ -15,24 +14,20 @@ def csv_to_dict(file_loc):
         csv_dict = csv.reader(csv_file, delimiter=',')
         line = 0
         headers = []
-        main_list = []
+        temp_list = []
         for row in csv_dict:
             if line == 0:
                 headers.extend(row)
-                print(headers)
             else:
                 temp_dict = {}
+                item_loc = 0
                 for item in row:
-                    print(item)
-                    temp_dict[headers[row.index(item)]] = item
-                main_list.append(temp_dict)
+                    temp_dict[headers[item_loc]] = item
+                    item_loc += 1
+                temp_list.append(temp_dict)
             line += 1
-        print(main_list)
-
-
-
-
+        return temp_list
 
 
 if __name__ == "__main__":
-    csv_to_dict(args.PATH)
+    print(csv_to_dict(args.PATH))
